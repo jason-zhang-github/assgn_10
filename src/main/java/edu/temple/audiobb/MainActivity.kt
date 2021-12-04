@@ -17,6 +17,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import edu.temple.audlibplayer.PlayerService
+import java.io.File
 import java.net.URL
 
 class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface , ControlFragment.MediaControlInterface{
@@ -24,6 +25,10 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
     private lateinit var bookListFragment : BookListFragment
     private lateinit var serviceIntent : Intent
     private lateinit var mediaControlBinder : PlayerService.MediaControlBinder
+
+    // Create file
+    val file = File(context.filesDir, getString(R.string.download_file))
+
     private var connected = false
 
     val audiobookHandler = Handler(Looper.getMainLooper()) { msg ->
@@ -192,6 +197,7 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
 
            // API.url.getBookDataUrl()
 
+            // AnnotationTarget.FILE
 
             mediaControlBinder.play(selectedBookViewModel.getSelectedBook().value!!.id)
             playingBookViewModel.setPlayingBook(selectedBookViewModel.getSelectedBook().value)
@@ -220,9 +226,9 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
         unbindService(serviceConnection)
     }
 
-    fun downloadBook()
+    /* fun downloadBook()
     {
 
-    }
+    }*/
 
 }
