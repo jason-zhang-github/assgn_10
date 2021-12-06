@@ -194,8 +194,7 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
 
             Log.d("Button pressed", "Play button")
             // Add Download Here
-
-           // API.url.getBookDataUrl()
+            DownloadAudioBook(this)
 
             // AnnotationTarget.FILE
 
