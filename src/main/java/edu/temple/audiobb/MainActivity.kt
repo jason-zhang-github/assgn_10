@@ -3,6 +3,7 @@ package edu.temple.audiobb
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
+import android.os.AsyncTask.execute
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -17,18 +18,12 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import edu.temple.audlibplayer.PlayerService
-import java.io.File
-import java.net.URL
 
 class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface , ControlFragment.MediaControlInterface{
 
     private lateinit var bookListFragment : BookListFragment
     private lateinit var serviceIntent : Intent
     private lateinit var mediaControlBinder : PlayerService.MediaControlBinder
-
-    // Create file
-    val file = File(context.filesDir, getString(R.string.download_file))
-
     private var connected = false
 
     val audiobookHandler = Handler(Looper.getMainLooper()) { msg ->
@@ -190,17 +185,14 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
 
     override fun play() {
         if (connected && selectedBookViewModel.getSelectedBook().value != null) {
-
-
             Log.d("Button pressed", "Play button")
-            // Add Download Here
-            DownloadAudioBook(this)
-
-            // AnnotationTarget.FILE
-
             mediaControlBinder.play(selectedBookViewModel.getSelectedBook().value!!.id)
             playingBookViewModel.setPlayingBook(selectedBookViewModel.getSelectedBook().value)
             startService(serviceIntent)
+
+            //get url and then download audiobook
+            val geturl = API.getBookDataUrl(selectedBookViewModel.getSelectedBook().value!!.id)
+            DownloadAudioBook(this).execute(geturl)
         }
     }
 
@@ -224,10 +216,4 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
         super.onDestroy()
         unbindService(serviceConnection)
     }
-
-    /* fun downloadBook()
-    {
-
-    }*/
-
 }
