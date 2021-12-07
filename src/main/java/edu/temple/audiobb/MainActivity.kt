@@ -204,7 +204,8 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
             var fileExistFile = File(getFilesDir().getAbsolutePath(), fileTitle)
             var fileExists = fileExistFile.exists()
 
-            if (fileExists) {
+            if (fileExists)
+            {
 
             }
             else
