@@ -10,6 +10,7 @@ import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import android.util.Log
+import android.util.SparseArray
 import android.view.View
 import android.widget.ImageButton
 import androidx.activity.result.contract.ActivityResultContracts
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
     private lateinit var serviceIntent : Intent
     private lateinit var mediaControlBinder : PlayerService.MediaControlBinder
     private var connected = false
+
+    lateinit var ()
 
     val audiobookHandler = Handler(Looper.getMainLooper()) { msg ->
 
