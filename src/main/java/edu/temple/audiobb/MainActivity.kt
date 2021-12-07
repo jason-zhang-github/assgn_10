@@ -199,13 +199,25 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
     override fun play() {
         if (connected && selectedBookViewModel.getSelectedBook().value != null) {
             Log.d("Button pressed", "Play button")
-            mediaControlBinder.play(selectedBookViewModel.getSelectedBook().value!!.id)
-            playingBookViewModel.setPlayingBook(selectedBookViewModel.getSelectedBook().value)
-            startService(serviceIntent)
 
-            //get url and then download audiobook
-            val geturl = API.getBookDataUrl(selectedBookViewModel.getSelectedBook().value!!.id)
-            DownloadAudioBook(this).execute(geturl)
+            val fileTitle = selectedBookViewModel.getSelectedBook().value!!.title
+            var fileExistFile = File(getFilesDir().getAbsolutePath(), fileTitle)
+            var fileExists = fileExistFile.exists()
+
+            if (fileExists) {
+
+            }
+            else
+            {
+                //currentfile
+                mediaControlBinder.play(selectedBookViewModel.getSelectedBook().value!!.id)
+                playingBookViewModel.setPlayingBook(selectedBookViewModel.getSelectedBook().value)
+                startService(serviceIntent)
+
+                //get url and then download audiobook
+                val geturl = API.getBookDataUrl(selectedBookViewModel.getSelectedBook().value!!.id)
+                DownloadAudioBook(this).execute(geturl, selectedBookViewModel.getSelectedBook().value!!.title)
+            }
         }
     }
 
