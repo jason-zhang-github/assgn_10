@@ -19,6 +19,8 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import edu.temple.audlibplayer.PlayerService
+import java.io.File
+import java.nio.channels.FileLockInterruptionException
 
 class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface , ControlFragment.MediaControlInterface{
 
@@ -27,7 +29,11 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
     private lateinit var mediaControlBinder : PlayerService.MediaControlBinder
     private var connected = false
 
-    lateinit var ()
+    //lateinit var sparse : SparseArray<SparseBooks>
+    lateinit var sparseArray : SparseArray<Int>
+
+    //File to search through app-specific storage
+    lateinit var currentfile : File
 
     val audiobookHandler = Handler(Looper.getMainLooper()) { msg ->
 
@@ -115,6 +121,10 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //Create SparseArray
+        //sparse = SparseArray()
+        sparseArray = SparseArray()
 
         playingBookViewModel.getPlayingBook().observe(this, {
             (supportFragmentManager.findFragmentById(R.id.controlFragmentContainerView) as ControlFragment).setNowPlaying(it.title)

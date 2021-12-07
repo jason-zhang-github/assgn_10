@@ -14,13 +14,13 @@ class DownloadAudioBook(val _context : Context) : AsyncTask<String, String, Stri
     {
         TODO("Not yet implemented")
 
-        val url = URL(params[0])
+        val url = URL(params[0]) // String one is URL
 
         val conn = url.openConnection()
         conn.connect()
 
         val input = BufferedInputStream(url.openStream())
-        val name : String = "name"
+        val name : String? = params[1] // String two is title
 
         val output = _context.openFileOutput(name, Context.MODE_PRIVATE)
 
