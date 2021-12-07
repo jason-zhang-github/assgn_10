@@ -211,6 +211,9 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
 
     override fun pause() {
         if (connected) mediaControlBinder.pause()
+
+        // save state of audiobook on pause
+        sparseArray.put(selectedBookViewModel.getSelectedBook().value!!.id, playingBookViewModel.getPlayingBook().value!!.duration)
     }
 
     override fun stop() {

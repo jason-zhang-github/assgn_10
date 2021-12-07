@@ -20,7 +20,7 @@ class DownloadAudioBook(val _context : Context) : AsyncTask<String, String, Stri
         conn.connect()
 
         val input = BufferedInputStream(url.openStream())
-        val name : String? = params[1] // String two is title
+        val name : String? = params[0] // Save as URL
 
         val output = _context.openFileOutput(name, Context.MODE_PRIVATE)
 
