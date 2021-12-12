@@ -149,6 +149,8 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
         // If this is the first time the activity is loading, go ahead and add a BookListFragment
         if (savedInstanceState == null) {
             bookListFragment = BookListFragment()
+
+        // TRANSACTION TO BE REPLACED
             supportFragmentManager.beginTransaction()
                 .add(R.id.container1, bookListFragment, BOOKLISTFRAGMENT_KEY)
                 .commit()
@@ -200,25 +202,10 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
         if (connected && selectedBookViewModel.getSelectedBook().value != null) {
             Log.d("Button pressed", "Play button")
 
-            val fileTitle = selectedBookViewModel.getSelectedBook().value!!.title
-            var fileExistFile = File(getFilesDir().getAbsolutePath(), fileTitle)
-            var fileExists = fileExistFile.exists()
-
-            if (fileExists)
-            {
-
-            }
-            else
-            {
                 //currentfile
-                mediaControlBinder.play(selectedBookViewModel.getSelectedBook().value!!.id)
-                playingBookViewModel.setPlayingBook(selectedBookViewModel.getSelectedBook().value)
-                startService(serviceIntent)
-
-                //get url and then download audiobook
-                val geturl = API.getBookDataUrl(selectedBookViewModel.getSelectedBook().value!!.id)
-                DownloadAudioBook(this).execute(geturl, selectedBookViewModel.getSelectedBook().value!!.title)
-            }
+            mediaControlBinder.play(selectedBookViewModel.getSelectedBook().value!!.id)
+            playingBookViewModel.setPlayingBook(selectedBookViewModel.getSelectedBook().value)
+            startService(serviceIntent)
         }
     }
 
