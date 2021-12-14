@@ -29,11 +29,8 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
     private lateinit var mediaControlBinder : PlayerService.MediaControlBinder
     private var connected = false
 
-    //lateinit var sparse : SparseArray<SparseBooks>
-    lateinit var sparseArray : SparseArray<Int>
-
     //File to search through app-specific storage
-    lateinit var currentfile : File
+  //  lateinit var currentfile : File
 
     val audiobookHandler = Handler(Looper.getMainLooper()) { msg ->
 
@@ -122,9 +119,6 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Create SparseArray
-        //sparse = SparseArray()
-        sparseArray = SparseArray()
 
         playingBookViewModel.getPlayingBook().observe(this, {
             (supportFragmentManager.findFragmentById(R.id.controlFragmentContainerView) as ControlFragment).setNowPlaying(it.title)
@@ -146,6 +140,7 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
             supportFragmentManager.popBackStack()
         }
 
+        // NEEDS TO BE REPLACED
         // If this is the first time the activity is loading, go ahead and add a BookListFragment
         if (savedInstanceState == null) {
             bookListFragment = BookListFragment()
@@ -211,9 +206,7 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
 
     override fun pause() {
         if (connected) mediaControlBinder.pause()
-
-        // save state of audiobook on pause
-        sparseArray.put(selectedBookViewModel.getSelectedBook().value!!.id, playingBookViewModel.getPlayingBook().value!!.duration)
+// sparseArray.put(selectedBookViewModel.getSelectedBook().value!!.id, playingBookViewModel.getPlayingBook().value!!.duration)
     }
 
     override fun stop() {
