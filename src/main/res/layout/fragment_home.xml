@@ -7,33 +7,34 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
- />
+        android:layout_width="316dp"
+        android:layout_height="385dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/controlFragmentContainerView"
+        app:layout_constraintVertical_bias="0.822" />
 
     <ImageButton
         android:id="@+id/searchButton"
-        android:layout_width="140dp"
-        android:layout_height="83dp"
+        android:layout_width="311dp"
+        android:layout_height="89dp"
         android:src="@android:drawable/ic_menu_search"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.117" />
+        tools:layout_editor_absoluteY="34dp" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/controlFragmentContainerView"
         android:name="edu.temple.audiobb.ControlFragment"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp" />
+        android:layout_width="308dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
