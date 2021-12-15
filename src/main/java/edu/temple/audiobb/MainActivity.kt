@@ -146,9 +146,9 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
             bookListFragment = BookListFragment()
 
         // TRANSACTION TO BE REPLACED
-            supportFragmentManager.beginTransaction()
+            /*supportFragmentManager.beginTransaction()
                 .add(R.id.container1, bookListFragment, BOOKLISTFRAGMENT_KEY)
-                .commit()
+                .commit() */
         } else {
             bookListFragment = supportFragmentManager.findFragmentByTag(BOOKLISTFRAGMENT_KEY) as BookListFragment
             // If activity loaded previously, there's already a BookListFragment

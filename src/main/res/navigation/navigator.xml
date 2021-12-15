@@ -10,7 +10,10 @@
         android:label="fragment_control"
         tools:layout="@layout/fragment_control" >
         <action
-            android:id="@+id/action_controlFragment2_to_bookListFragment"
+            android:id="@+id/action_controlFragment2_to_searchActivity"
+            app:destination="@id/searchActivity" />
+        <action
+            android:id="@+id/action_controlFragment2_to_bookListFragment2"
             app:destination="@id/bookListFragment" />
     </fragment>
     <fragment
@@ -27,4 +30,9 @@
         android:name="edu.temple.audiobb.BookDetailsFragment"
         android:label="fragment_book_details"
         tools:layout="@layout/fragment_book_details" />
+    <activity
+        android:id="@+id/searchActivity"
+        android:name="edu.temple.audiobb.SearchActivity"
+        android:label="activity_search"
+        tools:layout="@layout/activity_search" />
 </navigation>
