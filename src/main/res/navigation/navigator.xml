@@ -3,25 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigator"
-    app:startDestination="@id/bookListFragment">
+    app:startDestination="@id/controlFragment2">
     <fragment
         android:id="@+id/controlFragment2"
         android:name="edu.temple.audiobb.ControlFragment"
         android:label="fragment_control"
-        tools:layout="@layout/fragment_control" />
+        tools:layout="@layout/fragment_control" >
+        <action
+            android:id="@+id/action_controlFragment2_to_bookListFragment"
+            app:destination="@id/bookListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bookListFragment"
         android:name="edu.temple.audiobb.BookListFragment"
         android:label="fragment_book_list"
-        tools:layout="@layout/fragment_book_list" />
+        tools:layout="@layout/fragment_book_list" >
+        <action
+            android:id="@+id/action_bookListFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bookDetailsFragment"
         android:name="edu.temple.audiobb.BookDetailsFragment"
         android:label="fragment_book_details"
         tools:layout="@layout/fragment_book_details" />
-    <activity
-        android:id="@+id/searchActivity2"
-        android:name="edu.temple.audiobb.SearchActivity"
-        android:label="activity_search"
-        tools:layout="@layout/activity_search" />
 </navigation>
