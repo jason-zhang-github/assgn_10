@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Jason_Laptop/Documents/Android/CIS3515_Fall21_Assignment9-master/app/src/main/res/layout/activity_main.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Jason_Laptop/Documents/Android/CIS3515_Fall21_Assignment9-master/app/src/main/res/layout-land/activity_main.xml" value="0.13963963963963963" />
+        <entry key="..\:/Users/Jason_Laptop/Documents/Android/CIS3515_Fall21_Assignment9-master/app/src/main/res/layout-large/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Jason_Laptop/Documents/Android/CIS3515_Fall21_Assignment9-master/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Jason_Laptop/Documents/Android/CIS3515_Fall21_Assignment9-master/app/src/main/res/layout/activity_search.xml" value="0.1" />
         <entry key="..\:/Users/Jason_Laptop/Documents/Android/CIS3515_Fall21_Assignment9-master/app/src/main/res/layout/booklist_items_layout.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Jason_Laptop/Documents/Android/CIS3515_Fall21_Assignment9-master/app/src/main/res/layout/fragment_book_details.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Jason_Laptop/Documents/Android/CIS3515_Fall21_Assignment9-master/app/src/main/res/layout/fragment_book_list.xml" value="0.22135416666666666" />
