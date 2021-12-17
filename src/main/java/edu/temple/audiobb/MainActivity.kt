@@ -135,10 +135,6 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
         // Grab test data
         // getBookList()
 
-        // Create NavController to replace fragment transactions
-        val controller : NavController
-       // controller = Navigation.findNavController(MainActivity!!, R.id.control_nav)
-
         // If we're switching from one container to two containers
         // clear BookDetailsFragment from container1
         if (supportFragmentManager.findFragmentById(R.id.container1) is BookDetailsFragment
