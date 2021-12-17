@@ -8,10 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 private const val BOOK_LIST = "booklist"
+
+// create navcontroller
+lateinit var navController: NavController
 
 class BookListFragment : Fragment() {
     private val bookList: BookList by lazy {
@@ -30,6 +35,8 @@ class BookListFragment : Fragment() {
 
         val bookViewModel = ViewModelProvider(requireActivity()).get(SelectedBookViewModel::class.java)
 
+        navController = Navigation.findNavController(requireActivity(), R.id.navigator)
+
         // Using those sweet, sweet lambdas - but an onClickListener will do the job too
         val onClick : (Book) -> Unit = {
                 // Update the ViewModel
@@ -37,6 +44,8 @@ class BookListFragment : Fragment() {
                 // Inform the activity of the selection so as to not have the event replayed
                 // when the activity is restarted
                 (activity as BookSelectedInterface).bookSelected()
+
+                navController.navigate(R.id.action_bookListFragment_to_bookDetailsFragment)
         }
         with (view as RecyclerView) {
             layoutManager = LinearLayoutManager(requireActivity())

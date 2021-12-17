@@ -15,6 +15,8 @@ import android.view.View
 import android.widget.ImageButton
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -132,6 +134,10 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelectedInterface
 
         // Grab test data
         // getBookList()
+
+        // Create NavController to replace fragment transactions
+        val controller : NavController
+       // controller = Navigation.findNavController(MainActivity!!, R.id.control_nav)
 
         // If we're switching from one container to two containers
         // clear BookDetailsFragment from container1
